@@ -786,6 +786,67 @@
             color: var(--muted);
         }
 
+        /* Diary photos */
+        .diary-photos {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0 0.5rem;
+        }
+        .diary-photo {
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            position: relative;
+        }
+        .diary-photo img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--rule);
+        }
+        .diary-photo-caption {
+            font-size: 0.75rem;
+            color: var(--muted);
+            text-align: center;
+            margin-top: 0.4rem;
+            font-style: italic;
+            font-family: 'CrimsonPro', serif;
+        }
+        @media (max-width: 480px) {
+            .diary-photos { grid-template-columns: 1fr; }
+        }
+
+        /* Gallery with real photos */
+        .gallery-item.has-photo {
+            padding: 0;
+            border: 1px solid var(--rule);
+        }
+        .gallery-item.has-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: var(--radius-sm);
+        }
+        .gallery-item.has-photo .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0; right: 0;
+            background: linear-gradient(180deg, transparent, rgba(42,31,31,0.75));
+            color: white;
+            font-size: 0.78rem;
+            padding: 1.5rem 0.8rem 0.6rem;
+            text-align: center;
+            font-family: 'CrimsonPro', serif;
+            border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .gallery-item.has-photo:hover .gallery-caption {
+            opacity: 1;
+        }
+        .gallery-item.has-photo::before { display: none; }
+
         /* ========== Gallery ========== */
         .gallery-grid {
             display: grid;
@@ -1365,6 +1426,35 @@
                 </div>
                 <div class="diary-entry fade-in">
                     <div class="diary-header">
+                        <span class="diary-date">2026.08.16</span>
+                        <span class="diary-line"></span>
+                        <span class="diary-author">宥柠出生当天 · 来自全家人的记录</span>
+                    </div>
+                    <div class="diary-card glass-card">
+                        <h4 class="diary-title">带着爱而来</h4>
+                        <div class="diary-body">
+                            <p>妈妈即将进产房了。姑婆婆——妈妈的姑妈，也是宥柠的姑奶奶，一直陪伴在妈妈身边，给她加油打气，温柔地摸着妈妈的头，告诉她一切都会好的。</p>
+                            <p>产房门外，一家人都在等待着。等待宥柠的出生，也等待妈妈平安出来。那一刻，时间好像变得很慢很慢。</p>
+                            <p>他们都说，宥柠是<span class="accent-text">带着爱而来</span>的。</p>
+                            <p>当产房的门推开，妈妈被推出来的那一刻，所有人第一个关心的，不是别人，正是妈妈。大家围上去，问的不是别的，只是"妈妈还好吗"。</p>
+                            <p>妈妈后来跟我说，她感受到了满满的爱。正是因为感受到了这么多爱，所以宥柠才会来到这个世界。</p>
+                            <p>所以你看，宥柠不是偶然来到这里的。她是被爱召唤来的。</p>
+                        </div>
+                        <div class="diary-photos">
+                            <div class="diary-photo">
+                                <img src="./assets/birth_entering_room.jpg" alt="妈妈即将进产房" loading="lazy">
+                                <p class="diary-photo-caption">妈妈即将进入产房</p>
+                            </div>
+                            <div class="diary-photo">
+                                <img src="./assets/birth_great_aunt_comforting.jpg" alt="姑奶奶陪伴妈妈" loading="lazy">
+                                <p class="diary-photo-caption">姑奶奶温柔陪伴、给妈妈加油</p>
+                            </div>
+                        </div>
+                        <p class="diary-signature">—— 来自全家人的记录</p>
+                    </div>
+                </div>
+                <div class="diary-entry fade-in">
+                    <div class="diary-header">
                         <span class="diary-date" style="color: var(--muted);">待书写</span>
                         <span class="diary-line"></span>
                         <span class="diary-author" style="opacity: 0.6;">未来的日记</span>
@@ -1392,17 +1482,13 @@
                 </div>
             </div>
             <div class="gallery-grid fade-in">
-                <div class="gallery-item featured">
-                    <div class="gallery-placeholder">
-                        <div class="icon">📷</div>
-                        <div class="text">第一张照片</div>
-                    </div>
+                <div class="gallery-item featured has-photo">
+                    <img src="./assets/birth_entering_room.jpg" alt="妈妈即将进入产房" loading="lazy">
+                    <div class="gallery-caption">2026.08.16 · 妈妈即将进入产房</div>
                 </div>
-                <div class="gallery-item">
-                    <div class="gallery-placeholder">
-                        <div class="icon">📷</div>
-                        <div class="text">待上传</div>
-                    </div>
+                <div class="gallery-item has-photo">
+                    <img src="./assets/birth_great_aunt_comforting.jpg" alt="姑奶奶陪伴妈妈" loading="lazy">
+                    <div class="gallery-caption">2026.08.16 · 姑奶奶温柔陪伴妈妈</div>
                 </div>
                 <div class="gallery-item">
                     <div class="gallery-placeholder">
